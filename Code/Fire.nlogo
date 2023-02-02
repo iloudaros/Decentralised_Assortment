@@ -266,9 +266,9 @@ HORIZONTAL
 
 SLIDER
 5
-240
+280
 190
-273
+313
 south-wind-speed
 south-wind-speed
 -25
@@ -281,9 +281,9 @@ HORIZONTAL
 
 SLIDER
 5
-280
+320
 190
-313
+353
 west-wind-speed
 west-wind-speed
 -25
@@ -311,9 +311,9 @@ HORIZONTAL
 
 SWITCH
 45
-320
+240
 190
-353
+273
 resultants?
 resultants?
 1
