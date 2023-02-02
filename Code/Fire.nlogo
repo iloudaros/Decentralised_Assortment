@@ -17,12 +17,16 @@ to setup
     [ set pcolor green
       set time-to-burn 1
     ]
-    ;; make a column of burning trees at the left-edge
-    if pxcor = min-pxcor
-    [ set pcolor red ]
   ]
+
   ;; keep track of how many trees there are
   set initial-trees count patches with [pcolor = green]
+
+  ask patches with [ pxcor = min-pxcor and pcolor = green] [
+    ;; make a column of burning trees at the left-edge
+    set pcolor red
+  ]
+
   reset-ticks
 end
 
@@ -140,7 +144,6 @@ to compute-resultants
   if south-wind-speed > 0 and west-wind-speed < 0 [set se-resultant sqrt (south-wind-speed ^ 2 + west-wind-speed ^ 2)]
   ]
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 200
@@ -175,7 +178,7 @@ MONITOR
 190
 520
 percent burned
-((count patches with [shade-of? pcolor red]) / initial-trees)\n* 100
+((count patches with [pcolor = 11.5] ) / initial-trees) * 100
 3
 1
 11
@@ -189,7 +192,7 @@ density
 density
 0.0
 100.0
-55.0
+69.0
 1.0
 1
 %
@@ -238,7 +241,7 @@ probability-of-spread
 probability-of-spread
 0
 100
-60.0
+100.0
 1
 1
 %
@@ -667,9 +670,8 @@ Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
 NetLogo 6.3.0
 @#$#@#$#@
-set density 60.0
-setup
-repeat 180 [ go ]
+show
+((count patches with [pcolor = 11.5] ) / initial-trees) * 100
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
@@ -691,6 +693,27 @@ repeat 180 [ go ]
       <value value="-25"/>
       <value value="0"/>
       <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="south-wind-speed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="burning-neighbors-needed">
+      <value value="1"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="Probability of spread" repetitions="10" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>((count patches with [shade-of? pcolor red]) / initial-trees) * 100</metric>
+    <enumeratedValueSet variable="density">
+      <value value="65"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="resultants?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="probability-of-spread" first="0" step="5" last="100"/>
+    <enumeratedValueSet variable="west-wind-speed">
+      <value value="0"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="south-wind-speed">
       <value value="0"/>
