@@ -192,7 +192,7 @@ density
 density
 0.0
 100.0
-69.0
+65.0
 1.0
 1
 %
@@ -241,7 +241,7 @@ probability-of-spread
 probability-of-spread
 0
 100
-100.0
+75.0
 1
 1
 %
