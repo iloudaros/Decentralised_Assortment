@@ -19,8 +19,25 @@ to setup
     ]
   ]
 
+  if road? [
+    ask patches with [pxcor = 0 and pycor > 0] [
+      set pcolor black
+    ]
+  ]
+
+
   ;; keep track of how many trees there are
   set initial-trees count patches with [pcolor = green]
+
+  if slow-to-burn? [
+  ask patches with [ pcolor = green ] [
+    if random 100 < slow-to-burn-ratio [
+      set pcolor  green - 2
+      set time-to-burn 2
+    ]
+  ]
+  ]
+
 
   ask patches with [ pxcor = min-pxcor and pcolor = green] [
     ;; make a column of burning trees at the left-edge
@@ -43,7 +60,7 @@ to go
   ask patches with [ pcolor = red ] [
 
     ;; ask the unburned trees neighboring the burning tree
-    ask neighbors with [ pcolor = green ] [
+    ask neighbors with [ shade-of? pcolor green ] [
 
       let burning-neighbors count neighbors with [pcolor = red]
 
@@ -148,11 +165,11 @@ end
 GRAPHICS-WINDOW
 200
 10
-710
-521
+789
+600
 -1
 -1
-2.0
+2.315
 1
 10
 1
@@ -174,9 +191,9 @@ ticks
 
 MONITOR
 75
-475
+555
 190
-520
+600
 percent burned
 ((count patches with [pcolor = 11.5] ) / initial-trees) * 100
 3
@@ -192,7 +209,7 @@ density
 density
 0.0
 100.0
-65.0
+60.0
 1.0
 1
 %
@@ -234,14 +251,14 @@ NIL
 
 SLIDER
 5
-235
+180
 190
-268
+213
 probability-of-spread
 probability-of-spread
 0
 100
-75.0
+100.0
 1
 1
 %
@@ -249,9 +266,9 @@ HORIZONTAL
 
 SLIDER
 5
-275
+240
 190
-308
+273
 south-wind-speed
 south-wind-speed
 -25
@@ -264,9 +281,9 @@ HORIZONTAL
 
 SLIDER
 5
-315
+280
 190
-348
+313
 west-wind-speed
 west-wind-speed
 -25
@@ -279,9 +296,9 @@ HORIZONTAL
 
 SLIDER
 5
-195
+140
 190
-228
+173
 burning-neighbors-needed
 burning-neighbors-needed
 1
@@ -293,88 +310,63 @@ NIL
 HORIZONTAL
 
 SWITCH
-65
-360
+45
+320
 190
-393
+353
 resultants?
 resultants?
 1
 1
 -1000
 
+SWITCH
+45
+380
+192
+413
+slow-to-burn?
+slow-to-burn?
+0
+1
+-1000
+
+SLIDER
+20
+420
+192
+453
+slow-to-burn-ratio
+slow-to-burn-ratio
+0
+100
+80.0
+1
+1
+NIL
+HORIZONTAL
+
+SWITCH
+90
+480
+193
+513
+road?
+road?
+1
+1
+-1000
+
 @#$#@#$#@
-## ACKNOWLEDGMENT
-
-This model is from Chapter Three of the book "Introduction to Agent-Based Modeling: Modeling Natural, Social and Engineered Complex Systems with NetLogo", by Uri Wilensky & William Rand.
-
-* Wilensky, U. & Rand, W. (2015). Introduction to Agent-Based Modeling: Modeling Natural, Social and Engineered Complex Systems with NetLogo. Cambridge, MA. MIT Press.
-
-This model is in the IABM Textbook folder of the NetLogo Models Library. The model, as well as any updates to the model, can also be found on the textbook website: http://www.intro-to-abm.com/.
-
 ## WHAT IS IT?
 
 This project simulates the spread of a fire through a forest.  It shows that the fire's chance of reaching the right edge of the forest depends critically on the density of trees. This is an example of a common feature of complex systems, the presence of a non-linear threshold or critical parameter. This model extends the Fire Simple Extension 1 model by adding wind.
 
-## HOW IT WORKS
+## COPYRIGHT AND LICENSE
 
-The fire starts on the left edge of the forest, and spreads to neighboring trees. The fire spreads in four directions: north, east, south, and west.
-
-Unlike the original model, this model adds wind, which increases the probability of a fire igniting in the direction of the wind and decreases it away from the wind.
-
-## HOW TO USE IT
-
-Click the SETUP button to set up the trees (green) and fire (red on the left-hand side).
-
-Click the GO button to start the simulation.
-
-The DENSITY slider controls the density of trees in the forest. (Note: Changes in the DENSITY slider do not take effect until the next SETUP.)
-
-The PROBABILITY-OF-SPREAD slider affects how the fire spreads from patch to patch.
-
-The SOUTH-WIND-SPEED slider affects how strong the wind is from the south.  You can set it negative to create a north wind.
-
-The WEST-WIND-SPEED slider affects how strong the wind is from the south.  You can set it negative to create an east wind.
-
-## THINGS TO NOTICE
-
-Compare this model to the Fire Simple Extension 1 model.  How does the wind affect the model results?
-
-## THINGS TO TRY
-
-Set the wind speeds to various settings and see if you can create any interesting patterns.
-
-How, if at all, does adding wind change the overall amount of forest burned?
-
-## RELATED MODELS
-
-Fire Simple, Fire, Percolation, Rumor Mill
-
-## CREDITS AND REFERENCES
-
-This model is a simplified version of:
-
-* Wilensky, U. (1997).  NetLogo Fire model.  http://ccl.northwestern.edu/netlogo/models/Fire.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-
-## HOW TO CITE
-
-This model is part of the textbook, “Introduction to Agent-Based Modeling: Modeling Natural, Social and Engineered Complex Systems with NetLogo.”
-
-If you mention this model or the NetLogo software in a publication, we ask that you include the citations below.
-
-For the model itself:
+This model is an extention of the following model:
 
 * Wilensky, U. (2006).  NetLogo Fire Simple Extension 2 model.  http://ccl.northwestern.edu/netlogo/models/FireSimpleExtension2.  Center for Connected Learning and Computer-Based Modeling, Northwestern Institute on Complex Systems, Northwestern University, Evanston, IL.
-
-Please cite the NetLogo software as:
-
-* Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-
-Please cite the textbook as:
-
-* Wilensky, U. & Rand, W. (2015). Introduction to Agent-Based Modeling: Modeling Natural, Social and Engineered Complex Systems with NetLogo. Cambridge, MA. MIT Press.
-
-## COPYRIGHT AND LICENSE
 
 Copyright 2006 Uri Wilensky.
 
@@ -714,6 +706,31 @@ show
     <steppedValueSet variable="probability-of-spread" first="0" step="5" last="100"/>
     <enumeratedValueSet variable="west-wind-speed">
       <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="south-wind-speed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="burning-neighbors-needed">
+      <value value="1"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="Slow to burn" repetitions="10" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>((count patches with [pcolor = 11.5] ) / initial-trees) * 100</metric>
+    <enumeratedValueSet variable="density">
+      <value value="60"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="resultants?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="probability-of-spread" first="0" step="5" last="100"/>
+    <enumeratedValueSet variable="west-wind-speed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="slow-to-burn-ratio" first="0" step="20" last="100"/>
+    <enumeratedValueSet variable="slow-to-burn?">
+      <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="south-wind-speed">
       <value value="0"/>
