@@ -209,7 +209,7 @@ density
 density
 0.0
 100.0
-60.0
+30.0
 1.0
 1
 %
@@ -258,7 +258,7 @@ probability-of-spread
 probability-of-spread
 0
 100
-100.0
+25.0
 1
 1
 %
@@ -340,7 +340,7 @@ slow-to-burn-ratio
 slow-to-burn-ratio
 0
 100
-80.0
+100.0
 1
 1
 NIL
@@ -353,7 +353,7 @@ SWITCH
 513
 road?
 road?
-1
+0
 1
 -1000
 
@@ -737,6 +737,68 @@ show
     </enumeratedValueSet>
     <enumeratedValueSet variable="burning-neighbors-needed">
       <value value="1"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="Critical density" repetitions="10" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>((count patches with [pcolor = 11.5] ) / initial-trees) * 100</metric>
+    <steppedValueSet variable="density" first="30" step="1" last="70"/>
+    <enumeratedValueSet variable="resultants?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="probability-of-spread" first="25" step="25" last="100"/>
+    <enumeratedValueSet variable="west-wind-speed">
+      <value value="-25"/>
+      <value value="-5"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="slow-to-burn-ratio" first="0" step="25" last="100"/>
+    <enumeratedValueSet variable="slow-to-burn?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="south-wind-speed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="burning-neighbors-needed">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="road?">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="Critical density example" repetitions="1" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>((count patches with [pcolor = 11.5] ) / initial-trees) * 100</metric>
+    <steppedValueSet variable="density" first="1" step="1" last="100"/>
+    <enumeratedValueSet variable="resultants?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="probability-of-spread">
+      <value value="60"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="west-wind-speed">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="slow-to-burn-ratio">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="slow-to-burn?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="south-wind-speed">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="burning-neighbors-needed">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="road?">
+      <value value="true"/>
+      <value value="false"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>
