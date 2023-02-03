@@ -236,8 +236,7 @@ av_opinion_y
 @#$#@#$#@
 ## WHAT IS IT?
 
-This is a model on opinion dynamics based on the Friedkin-Johnsen Model.
-
+Αυτό το μοντέλο αναπτύχθηκε στα πλαίσια του μαθήματος Αποκεντρωμένος Υπολογισμός και Μοντελοποίηση του Τμήματος Μηχανικών Η/Υ και Πληροφορικής του Πανεπιστημίου Πατρών. 
 @#$#@#$#@
 default
 true

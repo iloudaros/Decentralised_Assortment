@@ -209,7 +209,7 @@ density
 density
 0.0
 100.0
-30.0
+50.0
 1.0
 1
 %
@@ -340,7 +340,7 @@ slow-to-burn-ratio
 slow-to-burn-ratio
 0
 100
-100.0
+50.0
 1
 1
 NIL
@@ -360,7 +360,9 @@ road?
 @#$#@#$#@
 ## WHAT IS IT?
 
-This project simulates the spread of a fire through a forest.  It shows that the fire's chance of reaching the right edge of the forest depends critically on the density of trees. This is an example of a common feature of complex systems, the presence of a non-linear threshold or critical parameter. This model extends the Fire Simple Extension 1 model by adding wind.
+Αυτό το μοντέλο αναπτύχθηκε στα πλαίσια του μαθήματος Αποκεντρωμένος Υπολογισμός και Μοντελοποίηση του Τμήματος Μηχανικών Η/Υ και Πληροφορικής του Πανεπιστημίου Πατρών. 
+
+Δείχνει το πως επηρεάζεται η διάδοση της φωτιάς από την πυκνώτητα του δάσους. Επίσης δείχνει ότι η κρίσιμη πυκνώτητα μεταβάλεται ανάλογα με τα χαρακτηριστικά του δάσους.
 
 ## COPYRIGHT AND LICENSE
 

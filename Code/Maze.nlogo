@@ -319,8 +319,8 @@ end
 GRAPHICS-WINDOW
 283
 19
-831
-568
+842
+579
 -1
 -1
 2.69
@@ -333,10 +333,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--100
-100
--100
-100
+-102
+102
+-102
+102
 0
 0
 1
@@ -460,7 +460,7 @@ wsize
 wsize
 20
 1000
-200.0
+204.0
 2
 1
 NIL
@@ -502,57 +502,6 @@ PENS
 "default" 1.0 0 -16777216 true "" "plot count turtles"
 
 @#$#@#$#@
-## WHAT IS IT?
-
-A demonstration of the BAM maze generating algorithm. This model will randomly generate a maze with 1 unique solution to get from one red patch to the other (without crossing the white walls). The maze can be saved as a .png image file. 
-
-## HOW IT WORKS
-
-This model uses the slides to create 2 red patches (right and left). It then sets 2 distinct white lines (above and below). Finally, the model generates random white lines connected either to the "above" white line or the "below" one - but never to both of them! This algorithm guarentees that there will remain black space between the white lines, which is the uniqe solution to the maze.
-
-## HOW TO USE IT
-
-Press "Setup" to start.
-Press "Go Forever" to generate the maze. Press again once you think the maze is done to your liking.
-Press "Clean" to remove all the remaining turtles.
-
-If you like it, press "Export Maze" to save it as a .png file. 
-
-You can use the sliders to change the vertical position of the red patches (Start and Finish). You can also change the difficulty level (Easy, Medium, or Hard).
-
-Try to solve the maze!
-
-## DIFFICULTY LEVELS
-
-The difficulty levels are only an estimate. The difference between them is in the amount of turtles used to create the maze. The more turtles, the more homogenous the random pattern becomes, and thus the maze is easir to solve on average.
-
-However, it takes a significantly shorter time to create easy mazes.
-
-## THINGS TO NOTICE
-
-Use the sliders and change the world dimensions. When is the maze most difficult?
-
-This is a really inefficient implementation of the algorithm as every tick many turtles die and are reborn.
-
-## EXTENDING THE MODEL
-
-You may change the size of the world at any time. I recommend using 65*40.
-(please do not change the world wrapping - it will cause a bug).
-
-There are many things which I would like to extend:
-
-1. improve efficiency
-2. control the random downhill movement a bit more
-3. generate patterns
-4. make the space between white lines be more than a single patch size
-5. improve the code (it is way too complex)
-6. make larger steps and different angles of movement
-
-## CREDITS AND REFERENCES
-
-Benjamin Menashe, Instagram @benjamaze.original
-
-bmenashe94@gmail.com
 @#$#@#$#@
 default
 true
